@@ -1,0 +1,496 @@
+<title>haeniivel メディアキット</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* ===== Layout: a vertical reel of floating 16:9 slides on a soft-pink stage; each slide is a size-container so all type/spacing scales in cqw/cqh and never reflows. Palette: bright signature pink, playful yet professional ===== */
+:root{
+  --ink:#3b2531;           /* warm plum-ink text */
+  --ink-mid:#6f4f5d;       /* body on light-pink */
+  --ink-soft:#9a7382;      /* muted mauve label */
+  --cream:#ffffff;         /* default slide ground (clean white) */
+  --cream-2:#f5f1f3;       /* neutral light tint */
+  --paper:#ffffff;
+  --rose:#dd8aa9;          /* muted signature rose */
+  --rose-deep:#c16a8c;     /* muted deeper rose for text/accents */
+  --rose-soft:#f0d6df;
+  --gold:#cf8aa0;          /* muted rose secondary */
+  --grow:#2f9e6a;          /* growth green */
+  --stage:#ffffff;         /* clean white stage behind slides */
+  --line:rgba(59,37,49,.11);
+  --line-d:rgba(59,37,49,.11);
+  --shadow:0 2cqh 5.5cqh rgba(40,28,38,.12);
+  --f-disp:"Zen Old Mincho",serif;
+  --f-body:"Zen Kaku Gothic New","Inter",system-ui,sans-serif;
+  --f-num:"Inter","Zen Kaku Gothic New",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--stage);color:var(--ink);font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+
+.wrap{
+  padding-block:clamp(16px,3.5vw,44px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.4vw,30px);
+}
+
+.mast{width:min(1120px,100%);display:flex;align-items:baseline;justify-content:space-between;gap:12px;color:var(--ink);padding-inline:2px}
+.mast__brand{font-family:var(--f-disp);font-weight:700;font-size:clamp(15px,1.5vw,19px);letter-spacing:.14em}
+.mast__brand b{color:var(--rose-deep);font-weight:700}
+.mast__tag{font-size:clamp(10px,1vw,12.5px);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+
+.slide{
+  width:min(1120px,100%);
+  aspect-ratio:16/9;
+  container-type:size;
+  border-radius:clamp(10px,1.4vw,18px);
+  overflow:hidden;position:relative;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(59,37,49,.07);
+  scroll-margin-top:16px;
+  background:var(--cream);
+}
+.slide__in{position:absolute;inset:0;padding:7cqh 6.4cqw;display:flex;flex-direction:column}
+
+.foot{position:absolute;left:6.4cqw;right:6.4cqw;bottom:4.2cqh;display:flex;justify-content:space-between;align-items:center;font-size:1.3cqw;letter-spacing:.14em;color:var(--ink-soft)}
+.foot b{color:var(--rose-deep);font-weight:700}
+
+.ey{font-family:var(--f-num);font-size:1.5cqw;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--rose-deep)}
+.secno{display:flex;align-items:baseline;gap:1.4cqw;font-size:1.7cqw;letter-spacing:.14em;color:var(--ink-soft);font-weight:700}
+.secno em{font-family:var(--f-num);font-style:normal;font-size:2.3cqw;color:var(--rose-deep);font-weight:800}
+
+h1,h2,h3{margin:0;font-family:var(--f-disp);font-weight:700;text-wrap:balance;line-height:1.14;color:var(--ink)}
+.lead{font-size:1.95cqw;line-height:1.7;color:var(--ink-mid);font-weight:500;max-width:62ch}
+
+/* ===== feature slides (cover + closing): bright blush-pink ground ===== */
+.slide--feature{background:
+   radial-gradient(120% 98% at 85% -6%, #d7a0b3, transparent 58%),
+   radial-gradient(130% 120% at -6% 116%, #c98ca3, transparent 52%),
+   linear-gradient(145deg,#bf7c94 0%,#a96681 100%);
+   color:#fff}
+.slide--feature h1,.slide--feature h2,.slide--feature .quote{color:#fff}
+.slide--feature .ey{color:#ffe3ef}
+.slide--feature .cover h1 span,.slide--feature .quote span{color:#fff2f8}
+.slide--feature .lead,.slide--feature .cover__desc{color:#ffe7f1}
+.slide--feature .cover__name{color:#fff}
+.slide--feature .cover__name small{color:#ffd6e5}
+.slide--feature .statrow{border-top-color:rgba(255,255,255,.34)}
+.slide--feature .stat{border-right-color:rgba(255,255,255,.34)}
+.slide--feature .stat__n{color:#fff}
+.slide--feature .stat__n u{color:#fff2f8}
+.slide--feature .stat__up{color:#c6f6d8}
+.slide--feature .stat__l{color:#ffd9e6}
+.slide--feature .foot{color:#ffd9e6}
+.slide--feature .foot b{color:#fff}
+.slide--feature .cta{color:#fff5fa}
+.slide--feature .chan{border-top-color:rgba(255,255,255,.34)}
+.slide--feature .chan a span{color:#ffdcea}
+.slide--feature .chan a b{color:#fff}
+.slide--feature .chan a:hover b{color:#ffe9f1}
+.slide--feature .contact{color:#ffd9e6}
+.slide--feature .contact a{color:#fff;border-bottom-color:rgba(255,255,255,.5)}
+.slide--feature .bigq{color:rgba(255,255,255,.22)}
+
+/* ===== COVER ===== */
+.cover__top{display:flex;justify-content:space-between;align-items:flex-start;gap:2cqw}
+.cover h1{font-size:7cqw;line-height:1.08;margin-top:1.2cqh;letter-spacing:.005em}
+.cover h1 span{color:var(--rose-deep)}
+.cover__who{margin-top:auto;display:flex;flex-direction:column;gap:1cqh}
+.cover__name{font-family:var(--f-num);font-weight:700;font-size:2.5cqw;letter-spacing:.02em;color:var(--ink)}
+.cover__name small{font-family:var(--f-body);font-weight:500;font-size:1.5cqw;color:var(--ink-soft);letter-spacing:.04em;margin-left:1.2cqw}
+.cover__desc{font-size:1.72cqw;line-height:1.65;color:var(--ink-mid);max-width:52ch}
+
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3cqh;border-top:1px solid var(--line)}
+.stat{padding:2.4cqh 1.6cqw 0;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat__n{font-family:var(--f-num);font-weight:800;font-size:4cqw;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.stat__n u{text-decoration:none;font-size:2cqw;color:var(--rose-deep);margin-left:.3cqw}
+.stat__up{font-family:var(--f-num);font-weight:800;font-size:1.4cqw;color:var(--grow);margin-left:.6cqw}
+.stat__l{margin-top:1cqh;font-size:1.32cqw;line-height:1.4;color:var(--ink-soft);letter-spacing:.04em}
+
+/* ===== ABOUT ===== */
+.grid2{display:grid;grid-template-columns:1.15fr 1fr;gap:5cqw;margin-top:2.4cqh;flex:1;min-height:0}
+.posi{list-style:none;margin:2cqh 0 0;padding:0;display:flex;flex-direction:column;gap:1.7cqh}
+.posi li{display:grid;grid-template-columns:auto 1fr;gap:1.6cqw;align-items:baseline}
+.posi b{font-family:var(--f-body);font-weight:700;font-size:1.6cqw;color:var(--rose-deep);white-space:nowrap}
+.posi span{font-size:1.62cqw;line-height:1.5;color:var(--ink-mid)}
+.compo{align-self:start;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:2cqw;padding:3cqh 2.4cqw;box-shadow:0 1cqh 2.6cqh rgba(40,28,38,.06)}
+.compo h3{font-family:var(--f-body);font-weight:700;font-size:1.5cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.bar{margin-top:2.2cqh;display:flex;flex-direction:column;gap:1.5cqh}
+.bar__row{display:flex;flex-direction:column;gap:.7cqh}
+.bar__top{display:flex;justify-content:space-between;align-items:baseline;font-size:1.5cqw}
+.bar__top b{font-weight:700;color:var(--ink)}
+.bar__top em{font-family:var(--f-num);font-style:normal;font-weight:800;color:var(--rose-deep);font-size:1.8cqw}
+.bar__track{height:1.1cqh;border-radius:1cqh;background:var(--cream-2);overflow:hidden}
+.bar__fill{height:100%;border-radius:1cqh;background:linear-gradient(90deg,var(--rose),var(--gold))}
+
+/* ===== PERFORMANCE ===== */
+.perf{display:grid;grid-template-columns:repeat(2,1fr);gap:2.2cqh 4cqw;margin-top:2.6cqh}
+.perf .stat{border:0;padding:0}
+.perf .stat__n{color:var(--ink)}
+.perf .stat__n u{color:var(--rose-deep)}
+.perf .stat__l{color:var(--ink-soft)}
+.perfside{background:var(--paper);border:1px solid var(--line);border-radius:2cqw;padding:2.6cqh 2.4cqw;display:flex;flex-direction:column;gap:1.5cqh;box-shadow:0 1cqh 2.6cqh rgba(40,28,38,.06)}
+.perfside h3{font-family:var(--f-body);font-weight:700;font-size:1.42cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.kv{display:flex;justify-content:space-between;align-items:baseline;font-size:1.6cqw;padding-bottom:1.2cqh;border-bottom:1px solid var(--line)}
+.kv:last-child{border-bottom:0;padding-bottom:0}
+.kv b{font-weight:500;color:var(--ink-mid)}
+.kv em{font-family:var(--f-num);font-style:normal;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;font-size:1.78cqw}
+.src{font-size:1.22cqw;color:var(--ink-soft);letter-spacing:.03em;margin-top:.4cqh}
+
+/* ===== CASES ===== */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6cqw;margin-top:2.4cqh;flex:1;min-height:0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:1.8cqw;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1.2cqh 3cqh rgba(40,28,38,.09)}
+.card__ph{position:relative;aspect-ratio:5/4;overflow:hidden;background:var(--cream-2)}
+.card__ph img{width:100%;height:100%;object-fit:cover;display:block}
+.card__tag{position:absolute;top:1.4cqh;left:1.4cqh;background:rgba(219,79,138,.92);color:#fff;font-family:var(--f-num);font-weight:700;font-size:1.16cqw;letter-spacing:.08em;padding:.7cqh 1.1cqw;border-radius:1cqw}
+.card__bd{padding:1.9cqh 1.7cqw 1.7cqh;display:flex;flex-direction:column;gap:1.3cqh;flex:1}
+.card__name{font-family:var(--f-disp);font-weight:700;font-size:1.78cqw;line-height:1.22;color:var(--ink)}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:1cqh 1.4cqw}
+.chip{display:flex;flex-direction:column;gap:.2cqh}
+.chip em{font-family:var(--f-num);font-style:normal;font-weight:800;font-size:1.86cqw;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+.chip span{font-size:1.12cqw;color:var(--ink-soft);letter-spacing:.03em}
+.chip--hot em{color:var(--rose-deep)}
+.result{margin-top:.2cqh;font-size:1.3cqw;line-height:1.45;color:var(--ink-mid);padding-top:1.2cqh;border-top:1px solid var(--line)}
+.result b{color:var(--rose-deep);font-weight:700;font-family:var(--f-num)}
+.btn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:.7cqw;text-decoration:none;
+  font-family:var(--f-body);font-weight:700;font-size:1.3cqw;letter-spacing:.04em;
+  background:var(--rose-deep);color:#fff;border-radius:1.1cqw;padding:1.3cqh 1.4cqw;transition:background .15s}
+.btn:hover{background:var(--ink)}
+.btn svg{width:1.5cqw;height:1.5cqw;flex:none}
+
+/* ===== PROCESS ===== */
+.proc{display:grid;grid-template-columns:1.25fr .9fr;gap:4.4cqw;margin-top:2.4cqh;flex:1;min-height:0}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.9cqh}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:2cqw;align-items:start}
+.steps .no{font-family:var(--f-num);font-weight:800;font-size:2.3cqw;color:var(--rose-deep);line-height:1;width:3.4cqw;border-right:2px solid var(--line);padding-right:1.4cqw}
+.steps h3{font-family:var(--f-body);font-weight:700;font-size:1.9cqw;color:var(--ink)}
+.steps p{margin:.6cqh 0 0;font-size:1.52cqw;line-height:1.55;color:var(--ink-mid)}
+.promo{align-self:stretch;display:flex;flex-direction:column;gap:1.8cqh}
+.promo__box{background:linear-gradient(135deg,var(--rose),var(--rose-deep));color:#fff;border-radius:1.8cqw;padding:2.6cqh 2.2cqw;position:relative;overflow:hidden}
+.promo__box .ey{color:#fff}
+.promo__box p{margin:1.2cqh 0 0;font-size:1.5cqw;line-height:1.62;color:#fff}
+.promo__box b{color:#fff;font-weight:800}
+.promo__dm{flex:1;min-height:0;border-radius:1.6cqw;overflow:hidden;border:1px solid var(--line);background:var(--cream-2);position:relative}
+.promo__dm img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.promo__cap{position:absolute;left:0;right:0;bottom:0;padding:1.4cqh 1.4cqw;background:linear-gradient(transparent,rgba(59,37,49,.86));color:#fff;font-size:1.22cqw;letter-spacing:.03em}
+
+/* ===== CLOSING ===== */
+.close{align-items:flex-start}
+.quote{font-family:var(--f-disp);font-weight:700;font-size:4.6cqw;line-height:1.28;letter-spacing:.01em;margin-top:1cqh;max-width:22ch;color:var(--ink)}
+.quote span{color:var(--rose-deep)}
+.close .lead{margin-top:2.4cqh}
+.cta{font-family:var(--f-disp);font-weight:700;font-size:2.4cqw;color:var(--rose-deep);margin-top:2cqh}
+.chan{margin-top:auto;display:grid;grid-template-columns:repeat(4,auto);gap:2.6cqw;padding-top:2.6cqh;border-top:1px solid var(--line)}
+.chan a{display:flex;flex-direction:column;gap:.7cqh;text-decoration:none;border-radius:1cqw;padding:.4cqh .2cqw;transition:transform .14s}
+.chan a:hover{transform:translateY(-.5cqh)}
+.chan a span{display:flex;align-items:center;gap:.5cqw;font-family:var(--f-num);font-size:1.26cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-deep);font-weight:700}
+.chan a span svg{width:1.3cqw;height:1.3cqw;opacity:.8}
+.chan a b{display:block;font-family:var(--f-num);font-weight:700;font-size:1.78cqw;color:var(--ink)}
+.chan a:hover b{color:var(--rose-deep)}
+.contact{margin-top:2.2cqh;font-size:1.46cqw;letter-spacing:.03em;color:var(--ink-soft)}
+.contact a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--rose-soft)}
+.contact a:hover{border-color:var(--rose-deep)}
+
+.bigq{position:absolute;top:1cqh;right:5cqw;font-family:var(--f-disp);font-size:16cqw;line-height:1;color:rgba(219,79,138,.18)}
+
+/* nav dots */
+.dots{position:fixed;right:max(12px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px;z-index:20}
+.dots button{width:10px;height:10px;border-radius:50%;border:1px solid rgba(219,79,138,.5);background:transparent;padding:0;cursor:pointer;transition:all .18s}
+.dots button[aria-current="true"]{background:var(--rose);border-color:var(--rose);transform:scale(1.25)}
+.hint{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(219,79,138,.82);
+  padding:7px 14px;border-radius:999px;backdrop-filter:blur(4px);transition:opacity .4s}
+
+@media (max-width:620px){
+  .dots{display:none}
+  .mast__tag{display:none}
+}
+@media print{
+  body{background:#fff}
+  .wrap{padding:0;gap:0}
+  .mast,.dots,.hint{display:none}
+  .slide{width:100%;border-radius:0;box-shadow:none;break-after:page;page-break-after:always}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="dots" id="dots" aria-hidden="true"></div>
+<div class="hint" id="hint">↑ ↓ / クリックでスライド移動</div>
+
+<div class="wrap">
+  <div class="mast">
+    <div class="mast__brand"><b>haeniivel</b> · MEDIA KIT</div>
+    <div class="mast__tag">Hotel &amp; Ryokan Collaboration · 2026</div>
+  </div>
+
+  <!-- 01 COVER -->
+  <section class="slide slide--feature cover" data-title="表紙">
+    <div class="slide__in">
+      <div class="cover__top">
+        <div class="ey">インフルエンサー メディアキット · 2026</div>
+      </div>
+      <h1>旅を「予約」に変える<br><span>クリエイター。</span></h1>
+      <div class="cover__who">
+        <div class="cover__name">haeniivel<small>@haeniivel · トラベルクリエイター</small></div>
+        <p class="cover__desc">13年の海外在住者が、現地の人から得た穴場・グルメ・ルートを発信。日本旅行を計画する韓国人が「保存して、予約する」コンテンツ。</p>
+      </div>
+      <div class="statrow">
+        <div class="stat"><div class="stat__n">13,550</div><div class="stat__l">Instagram フォロワー</div></div>
+        <div class="stat"><div class="stat__n">128<u>万</u><span class="stat__up">+121%</span></div><div class="stat__l">30日間の再生数</div></div>
+        <div class="stat"><div class="stat__n">61.7<u>万</u><span class="stat__up">+130%</span></div><div class="stat__l">30日間のリーチ</div></div>
+        <div class="stat"><div class="stat__n">4,782</div><div class="stat__l">最高DM予約リード<br>（SAVHE上海）</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>@haeniivel · トラベルクリエイター</span><span><b>01</b> 表紙</span></div>
+  </section>
+
+  <!-- 02 ABOUT -->
+  <section class="slide" data-title="私について">
+    <div class="slide__in">
+      <div class="secno"><span>私について</span><em>02</em></div>
+      <h2 style="font-size:4.2cqw;margin-top:1.6cqh">現地在住のトラベルインサイダー</h2>
+      <div class="grid2">
+        <div>
+          <p class="lead">13年の在住者が、穴場スポットを「すぐ辿れるコース」に整理。だから広告ではなく、<b style="color:var(--rose-deep)">本物のおすすめ</b>として伝わります。</p>
+          <ul class="posi">
+            <li><b>信頼性</b><span>現地在住ならではのインサイダー情報</span></li>
+            <li><b>主要エリア</b><span>日本（京都・大阪・由布院・札幌）· バリ · 上海</span></li>
+            <li><b>オーディエンス</b><span>日本・バリ旅行を計画中の韓国人</span></li>
+            <li><b>規模</b><span>投稿 68 · フォロワー 13,550</span></li>
+          </ul>
+        </div>
+        <div class="compo">
+          <h3>コンテンツ構成</h3>
+          <div class="bar">
+            <div class="bar__row"><div class="bar__top"><b>日本コース／旅行</b><em>60%</em></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+            <div class="bar__row"><div class="bar__top"><b>グルメ · 飲食</b><em>20%</em></div><div class="bar__track"><div class="bar__fill" style="width:34%"></div></div></div>
+            <div class="bar__row"><div class="bar__top"><b>ホテル · 旅館 · 宿泊</b><em>13%</em></div><div class="bar__track"><div class="bar__fill" style="width:22%"></div></div></div>
+            <div class="bar__row"><div class="bar__top"><b>バリ · ウェルネス</b><em>7%</em></div><div class="bar__track"><div class="bar__fill" style="width:12%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>@haeniivel · トラベルクリエイター</span><span><b>02</b> 私について</span></div>
+  </section>
+
+  <!-- 03 PERFORMANCE -->
+  <section class="slide" data-title="パフォーマンス">
+    <div class="slide__in">
+      <div class="secno"><span>パフォーマンス</span><em>03</em></div>
+      <h2 style="font-size:4.2cqw;margin-top:1.6cqh">小さくても、爆発的に伸びている</h2>
+      <p class="lead" style="margin-top:1.4cqh">直近30日で再生数・リーチが2倍以上に成長。保存とプロフィール遷移を「予約問い合わせ」へ変える導線設計です。</p>
+      <div class="grid2" style="grid-template-columns:1.2fr 1fr;margin-top:2cqh">
+        <div class="perf">
+          <div class="stat"><div class="stat__n">1,278,548<span class="stat__up">+121.3%</span></div><div class="stat__l">30日間の再生数</div></div>
+          <div class="stat"><div class="stat__n">617,105<span class="stat__up">+130.0%</span></div><div class="stat__l">リーチ（到達アカウント）</div></div>
+          <div class="stat"><div class="stat__n">58<u style="color:var(--rose-deep)">万</u></div><div class="stat__l">リール再生（最も伸びる形式）</div></div>
+          <div class="stat"><div class="stat__n">187<span class="stat__up">+41.7%</span></div><div class="stat__l">プロフィール内リンククリック</div></div>
+        </div>
+        <div class="perfside">
+          <h3>コンテンツ別の内訳</h3>
+          <div class="kv"><b>リール 再生</b><em>58万</em></div>
+          <div class="kv"><b>投稿 再生</b><em>24万</em></div>
+          <div class="kv"><b>いいね（反応）</b><em>6,700+</em></div>
+          <div class="kv"><b>プロフィール訪問</b><em>7,400</em></div>
+          <div class="src">※ 2026年10月16日〜11月15日のアカウントインサイト</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>@haeniivel · トラベルクリエイター</span><span><b>03</b> パフォーマンス</span></div>
+  </section>
+
+  <!-- 04 CASES 1 -->
+  <section class="slide" data-title="実績・証明 1">
+    <div class="slide__in">
+      <div class="secno"><span>実績 · 証明 &nbsp;<span style="color:var(--gold);font-size:1.4cqw;letter-spacing:.1em">リール → 自動DM → ブログ → 実際の予約</span></span><em>04</em></div>
+      <div class="cases">
+        <article class="card">
+          <div class="card__ph"><img src="img/shizuoka.jpg" alt="静岡 富士山ビューホテルのリール"><span class="card__tag">CASE 01 · ホテル</span></div>
+          <div class="card__bd">
+            <div class="card__name">静岡・富士山ビューホテル</div>
+            <div class="chips">
+              <div class="chip"><em>414,000+</em><span>再生</span></div>
+              <div class="chip"><em>6,345</em><span>いいね</span></div>
+              <div class="chip"><em>1,544</em><span>コメント</span></div>
+              <div class="chip chip--hot"><em>9,454</em><span>保存</span></div>
+            </div>
+            <div class="result">予約売上 <b>₩33,298,758</b> · 142予約（Agoda経由）</div>
+            <a class="btn" href="https://www.instagram.com/reel/DY9xuj4IRo7/" target="_blank" rel="noopener">投稿を見る
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__ph"><img src="img/shanghai.jpg" alt="上海 SAVHE Hotelのリール"><span class="card__tag">CASE 02 · 宿泊·CPA</span></div>
+          <div class="card__bd">
+            <div class="card__name">SAVHE Hotel 上海</div>
+            <div class="chips">
+              <div class="chip"><em>303,000+</em><span>再生</span></div>
+              <div class="chip"><em>2,345</em><span>いいね</span></div>
+              <div class="chip chip--hot"><em>7,079</em><span>コメント＝リード</span></div>
+              <div class="chip chip--hot"><em>12,454</em><span>保存</span></div>
+            </div>
+            <div class="result">予約売上 <b>₩33,598,224</b> · 105予約（Trip.com経由）</div>
+            <a class="btn" href="https://www.instagram.com/reel/DV2__uCEX7R/" target="_blank" rel="noopener">投稿を見る
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__ph"><img src="img/hi_suites.jpg" alt="ホリデイ・イン スイーツ 札幌大通のリール"><span class="card__tag">CASE 03 · ホテル</span></div>
+          <div class="card__bd">
+            <div class="card__name">ホリデイ・イン スイーツ 札幌大通</div>
+            <div class="chips">
+              <div class="chip"><em>62,045</em><span>再生</span></div>
+              <div class="chip"><em>49,607</em><span>リーチ</span></div>
+              <div class="chip chip--hot"><em>1,342</em><span>保存</span></div>
+              <div class="chip"><em>729</em><span>シェア</span></div>
+            </div>
+            <div class="result">新規フォロー <b>17</b> · 平均視聴 8秒 · コラボ投稿</div>
+            <a class="btn" href="https://www.instagram.com/reel/Ddvuu4EIQJW/" target="_blank" rel="noopener">投稿を見る
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="foot"><span>@haeniivel · トラベルクリエイター</span><span><b>04</b> 実績・証明 &nbsp;1/2</span></div>
+  </section>
+
+  <!-- 05 CASES 2 -->
+  <section class="slide" data-title="実績・証明 2">
+    <div class="slide__in">
+      <div class="secno"><span>実績 · 証明 &nbsp;<span style="color:var(--gold);font-size:1.4cqw;letter-spacing:.1em">保存・シェアが示す「本気の予約意向」</span></span><em>04</em></div>
+      <div class="cases">
+        <article class="card">
+          <div class="card__ph"><img src="img/hi_express.jpg" alt="ホリデイ・イン エクスプレス＆スイーツ 札幌すすきののリール"><span class="card__tag">CASE 04 · ホテル</span></div>
+          <div class="card__bd">
+            <div class="card__name">ホリデイ・イン エクスプレス&amp;スイーツ 札幌すすきの</div>
+            <div class="chips">
+              <div class="chip"><em>13,000</em><span>再生</span></div>
+              <div class="chip"><em>10,000</em><span>リーチ</span></div>
+              <div class="chip chip--hot"><em>293</em><span>保存</span></div>
+              <div class="chip"><em>154</em><span>シェア</span></div>
+            </div>
+            <div class="result">7月オープンの新規ホテル · 反応 <b>653</b></div>
+            <a class="btn" href="https://www.instagram.com/reel/Dd531nsoA_4/" target="_blank" rel="noopener">投稿を見る
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__ph"><img src="img/morino.jpg" alt="森の料亭 旅館のリール"><span class="card__tag">CASE 05 · 旅館</span></div>
+          <div class="card__bd">
+            <div class="card__name">森の料亭 旅館（札幌近郊）</div>
+            <div class="chips">
+              <div class="chip"><em>50,000</em><span>再生</span></div>
+              <div class="chip chip--hot"><em>1,969</em><span>保存</span></div>
+              <div class="chip chip--hot"><em>1,964</em><span>シェア</span></div>
+              <div class="chip"><em>258</em><span>コメント</span></div>
+            </div>
+            <div class="result">参加アカウント <b>4,061</b> · 反応 4,898</div>
+            <a class="btn" href="https://www.instagram.com/p/DeZGXAQGqyn/?img_index=1" target="_blank" rel="noopener">投稿を見る
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__ph"><img src="img/nihon.jpg" alt="日本の明日葉 旅館のリール"><span class="card__tag">CASE 06 · 旅館</span></div>
+          <div class="card__bd">
+            <div class="card__name">日本の明日葉 旅館（由布院）</div>
+            <div class="chips">
+              <div class="chip"><em>25,278</em><span>再生</span></div>
+              <div class="chip"><em>19,538</em><span>リーチ</span></div>
+              <div class="chip chip--hot"><em>436</em><span>コメント</span></div>
+              <div class="chip"><em>760</em><span>保存</span></div>
+            </div>
+            <div class="result">新規フォロー <b>114</b> · 大浴場が話題に</div>
+            <a class="btn" href="https://www.instagram.com/reel/DZKhDVZoBmN/" target="_blank" rel="noopener">投稿を見る
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="foot"><span>@haeniivel · トラベルクリエイター</span><span><b>04</b> 実績・証明 &nbsp;2/2</span></div>
+  </section>
+
+  <!-- 06 PROCESS -->
+  <section class="slide" data-title="制作方法">
+    <div class="slide__in">
+      <div class="secno"><span>制作方法</span><em>05</em></div>
+      <h2 style="font-size:4cqw;margin-top:1.4cqh">「見る」で終わらせない、基本パッケージ</h2>
+      <div class="proc">
+        <ol class="steps">
+          <li><div class="no">01</div><div><h3>リール 1本</h3><p>フック型の縦型動画で、フォロワー以外への発見流入を最大化します。</p></div></li>
+          <li><div class="no">02</div><div><h3>ストーリー 3本以上</h3><p>予約リンク・プロモコードを設置し、見た直後の行動につなげます。</p></div></li>
+          <li><div class="no">03</div><div><h3>Naver ブログ 1本</h3><p>検索から常時流入する予約後記。投稿後も長く効き続ける導線です。</p></div></li>
+        </ol>
+        <div class="promo">
+          <div class="promo__box">
+            <div class="ey">予約への自動接続</div>
+            <p>ホテル専用のプロモコードがある場合、<b>投稿アップ後に自動DMを発送</b>。予約リンク・プロモ割引リンクを同送し、「見る」から「予約」まで最短距離でつなぎます。</p>
+          </div>
+          <div class="promo__dm">
+            <img src="img/dm_proof.jpg" alt="投稿を見て予約したという宿泊施設からの感謝DM">
+            <div class="promo__cap">実際に届いた「投稿を見て予約しました」のDM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>@haeniivel · トラベルクリエイター</span><span><b>05</b> 制作方法</span></div>
+  </section>
+
+  <!-- 07 CLOSING -->
+  <section class="slide slide--feature close" data-title="お問い合わせ">
+    <div class="bigq">”</div>
+    <div class="slide__in">
+      <div class="ey">お問い合わせ</div>
+      <div class="quote">「見られる広告」ではなく、<br><span>「予約で終わる広告」</span>をつくります。</div>
+      <p class="lead">直近30日で再生128万・リーチ61.7万 — 1投稿で最大4,782件の予約問い合わせリード。測定可能な成果でお返しします。</p>
+      <div class="cta">ぜひコラボレーションを。</div>
+      <div class="chan">
+        <a href="https://www.instagram.com/haeniivel/" target="_blank" rel="noopener"><span>Instagram ↗</span><b>@haeniivel</b></a>
+        <a href="https://blog.naver.com/haenii97" target="_blank" rel="noopener"><span>Naver Blog ↗</span><b>haenii97</b></a>
+        <a href="https://www.youtube.com/@haeniivel97" target="_blank" rel="noopener"><span>YouTube ↗</span><b>@haeniivel97</b></a>
+        <a href="https://www.threads.net/@haeniivel" target="_blank" rel="noopener"><span>Threads ↗</span><b>@haeniivel</b></a>
+      </div>
+      <div class="contact">お問い合わせ <a href="mailto:haenii97@naver.com">haenii97@naver.com</a> &nbsp;·&nbsp; カテゴリー 世界旅行</div>
+    </div>
+    <div class="foot"><span>@haeniivel · トラベルクリエイター</span><span><b>06</b> お問い合わせ</span></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots');
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.type='button';
+    b.setAttribute('aria-label',(i+1)+'. '+(s.dataset.title||''));
+    b.addEventListener('click',function(){s.scrollIntoView({behavior:'smooth',block:'center'});});
+    dots.appendChild(b);
+  });
+  var btns=[].slice.call(dots.children);
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var i=slides.indexOf(e.target);
+        btns.forEach(function(b,j){b.setAttribute('aria-current', j===i?'true':'false');});
+      }
+    });
+  },{threshold:.55});
+  slides.forEach(function(s){io.observe(s);});
+
+  function current(){
+    var mid=window.innerHeight/2, best=0, bd=1e9;
+    slides.forEach(function(s,i){var r=s.getBoundingClientRect();var d=Math.abs((r.top+r.bottom)/2-mid);if(d<bd){bd=d;best=i;}});
+    return best;
+  }
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>=0){e.preventDefault();var n=Math.min(slides.length-1,current()+1);slides[n].scrollIntoView({behavior:'smooth',block:'center'});}
+    else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>=0){e.preventDefault();var p=Math.max(0,current()-1);slides[p].scrollIntoView({behavior:'smooth',block:'center'});}
+  });
+  var hint=document.getElementById('hint');
+  setTimeout(function(){hint.style.opacity='0';},4200);
+})();
+</script>
